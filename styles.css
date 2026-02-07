@@ -1,3 +1,7 @@
+/* ===================================
+   손약사 상담창구 - 미니멀 흑백 디자인
+   =================================== */
+
 /* 전체 페이지 기본 스타일 */
 * {
     margin: 0;
@@ -6,91 +10,103 @@
 }
 
 body {
-    font-family: 'Malgun Gothic', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* 본문 폰트: Noto Sans KR (얇은 굵기) */
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: #f7f7f7;
     min-height: 100vh;
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
 }
 
-/* 메인 컨테이너 */
+/* 메인 컨테이너 - 깔끔한 흰 배경 */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 520px;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 94vh;
 }
 
-/* 헤더 영역 스타일 */
+/* ===================================
+   헤더 영역 - 검정 배경 + 세리프 제목
+   =================================== */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 30px;
-    text-align: center;
+    background: #111111;
+    color: #ffffff;
+    padding: 28px 32px;
+    border-bottom: 1px solid #333;
 }
 
+/* 제목: 세리프 폰트로 무드 있게 */
 .header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
 }
 
+/* 부제목: 가벼운 회색 */
 .subtitle {
-    font-size: 1rem;
-    opacity: 0.9;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #999999;
+    letter-spacing: 0.05em;
 }
 
-/* 메인 컨텐츠 영역 */
+/* ===================================
+   메인 컨텐츠 영역
+   =================================== */
 .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 20px;
     overflow: hidden;
 }
 
-/* 채팅 컨테이너 */
+/* ===================================
+   채팅 컨테이너
+   =================================== */
 .chat-container {
     flex: 1;
     overflow-y: auto;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    padding: 24px;
+    background: #ffffff;
 }
 
-/* 스크롤바 스타일 */
+/* 스크롤바 - 미니멀하게 */
 .chat-container::-webkit-scrollbar {
-    width: 8px;
+    width: 3px;
 }
 
 .chat-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+    background: transparent;
 }
 
 .chat-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+    background: #ccc;
 }
 
-.chat-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+/* ===================================
+   메시지 스타일
+   =================================== */
 
-/* 메시지 공통 스타일 */
+/* 메시지 공통 */
 .message {
-    margin-bottom: 15px;
-    animation: fadeIn 0.3s ease-in;
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease;
 }
 
+/* 페이드인 애니메이션 */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(6px);
     }
     to {
         opacity: 1;
@@ -98,147 +114,189 @@ body {
     }
 }
 
-.message-content {
-    padding: 15px 20px;
-    border-radius: 15px;
-    max-width: 80%;
-    line-height: 1.6;
+/* 발신자 라벨 (손약사 / 나) */
+.message-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #999;
+    margin-bottom: 6px;
+    text-transform: uppercase;
 }
 
-/* 봇 메시지 스타일 */
+/* 메시지 내용 공통 */
+.message-content {
+    padding: 14px 18px;
+    max-width: 88%;
+    line-height: 1.7;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* 봇(손약사) 메시지 - 얇은 왼쪽 보더 */
 .bot-message .message-content {
-    background: white;
-    border: 2px solid #667eea;
+    background: #fafafa;
+    border-left: 2px solid #111;
     margin-right: auto;
+    color: #222;
 }
 
 .bot-message .message-content p {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .bot-message .message-content p:last-child {
     margin-bottom: 0;
 }
 
-/* 사용자 메시지 스타일 */
+/* 사용자 메시지 - 검정 배경 */
+.user-message .message-label {
+    text-align: right;
+}
+
 .user-message .message-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: #111;
+    color: #f5f5f5;
     margin-left: auto;
 }
 
-/* 정보 텍스트 스타일 */
+/* 정보 텍스트 - 연한 회색 이탤릭 */
 .info-text {
-    font-size: 0.9rem;
-    opacity: 0.7;
+    font-size: 0.82rem;
+    color: #999;
     font-style: italic;
+    margin-top: 4px;
 }
 
-/* 추천 영양제 리스트 스타일 */
+/* ===================================
+   영양제 추천 리스트 스타일
+   =================================== */
 .supplement-list {
-    margin-top: 15px;
+    margin-top: 14px;
 }
 
+/* 각 영양제 카드 */
 .supplement-item {
-    background: #f0f4ff;
-    padding: 15px;
+    background: #ffffff;
+    padding: 14px 16px;
     margin-bottom: 10px;
-    border-radius: 10px;
-    border-left: 4px solid #667eea;
+    border: 1px solid #e8e8e8;
+    border-left: 3px solid #111;
 }
 
 .supplement-item h3 {
-    color: #667eea;
+    color: #111;
+    font-family: 'Noto Serif KR', serif;
     margin-bottom: 8px;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
 }
 
 .supplement-item p {
     color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 5px;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    line-height: 1.6;
 }
 
-/* 입력 영역 스타일 */
+.supplement-item p strong {
+    color: #333;
+    font-weight: 500;
+}
+
+/* ===================================
+   입력 영역
+   =================================== */
 .input-area {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 0;
+    border-top: 1px solid #e0e0e0;
 }
 
+/* 텍스트 입력 필드 */
 .input-field {
     flex: 1;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.input-field:focus {
-    border-color: #667eea;
-}
-
-.send-button {
-    padding: 15px 30px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 16px 20px;
     border: none;
-    border-radius: 25px;
-    font-size: 1rem;
+    font-size: 0.88rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    outline: none;
+    background: #fff;
+    color: #111;
+}
+
+.input-field::placeholder {
+    color: #bbb;
+}
+
+/* 전송 버튼 - 검정 사각형 */
+.send-button {
+    padding: 16px 20px;
+    background: #111;
+    color: #fff;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .send-button:hover {
-    transform: scale(1.05);
+    background: #333;
 }
 
 .send-button:active {
-    transform: scale(0.95);
+    background: #000;
 }
 
-/* 빠른 질문 버튼들 */
+/* ===================================
+   빠른 질문 버튼들
+   =================================== */
 .quick-buttons {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 8px;
+    padding: 14px 20px;
+    border-top: 1px solid #f0f0f0;
 }
 
 .quick-btn {
-    padding: 10px 20px;
-    background: white;
-    border: 2px solid #667eea;
-    color: #667eea;
-    border-radius: 20px;
+    padding: 7px 16px;
+    background: transparent;
+    border: 1px solid #ccc;
+    color: #555;
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9rem;
+    transition: all 0.2s;
+    font-size: 0.78rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
 }
 
 .quick-btn:hover {
-    background: #667eea;
-    color: white;
-    transform: translateY(-2px);
+    background: #111;
+    border-color: #111;
+    color: #fff;
 }
 
-/* 푸터 영역 스타일 */
+/* ===================================
+   푸터 영역
+   =================================== */
 .footer {
-    background: #f8f9fa;
-    padding: 20px;
+    padding: 14px 24px;
     text-align: center;
-    font-size: 0.85rem;
-    color: #666;
-    border-top: 1px solid #ddd;
+    font-size: 0.7rem;
+    color: #bbb;
+    border-top: 1px solid #e0e0e0;
+    font-weight: 300;
+    letter-spacing: 0.01em;
 }
 
-.footer p {
-    margin-bottom: 5px;
-}
-
-/* 로딩 애니메이션 */
+/* ===================================
+   로딩 애니메이션
+   =================================== */
 .loading {
     display: inline-block;
 }
@@ -260,36 +318,42 @@ body {
     }
 }
 
-/* 반응형 디자인 - 모바일 */
+/* ===================================
+   반응형 디자인 - 모바일
+   =================================== */
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
     .container {
-        height: 95vh;
-        border-radius: 10px;
+        height: 100vh;
+        border: none;
+    }
+
+    .header {
+        padding: 24px;
     }
 
     .header h1 {
-        font-size: 1.5rem;
-    }
-
-    .subtitle {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
     }
 
     .message-content {
-        max-width: 90%;
+        max-width: 92%;
     }
 
     .quick-buttons {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .quick-btn {
-        font-size: 0.85rem;
-        padding: 8px 15px;
+        font-size: 0.75rem;
+        padding: 6px 13px;
     }
 
     .footer {
-        font-size: 0.75rem;
-        padding: 15px;
+        font-size: 0.65rem;
+        padding: 12px 16px;
     }
 }

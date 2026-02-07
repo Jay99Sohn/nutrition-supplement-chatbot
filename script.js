@@ -114,12 +114,18 @@ function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
 
+    // 발신자 라벨 생성
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'message-label';
+    labelDiv.textContent = isUser ? '나' : '손약사';
+
     // 메시지 내용을 담는 div 생성
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     contentDiv.innerHTML = content;
 
     // 메시지를 채팅창에 추가
+    messageDiv.appendChild(labelDiv);
     messageDiv.appendChild(contentDiv);
     chatContainer.appendChild(messageDiv);
 
@@ -132,7 +138,18 @@ function showLoading() {
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'message bot-message';
     loadingDiv.id = 'loading-message';
-    loadingDiv.innerHTML = '<div class="message-content"><p>답변을 준비하고 있습니다<span class="loading"></span></p></div>';
+
+    // 라벨 + 로딩 텍스트 조합
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'message-label';
+    labelDiv.textContent = '손약사';
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+    contentDiv.innerHTML = '<p>확인 중<span class="loading"></span></p>';
+
+    loadingDiv.appendChild(labelDiv);
+    loadingDiv.appendChild(contentDiv);
     chatContainer.appendChild(loadingDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
@@ -162,29 +179,29 @@ function getSupplementRecommendation(query) {
 
     // 추천 영양제가 있으면 HTML 형식으로 반환
     if (recommendations) {
-        let response = `<p><strong>${foundKeyword}</strong>에 도움이 되는 영양제를 추천해드립니다:</p>`;
+        let response = `<p><strong>${foundKeyword}</strong>에 도움이 되는 영양제입니다.</p>`;
         response += '<div class="supplement-list">';
 
         recommendations.forEach(supplement => {
             response += `
                 <div class="supplement-item">
-                    <h3>💊 ${supplement.name}</h3>
-                    <p><strong>효능:</strong> ${supplement.description}</p>
-                    <p><strong>권장 용량:</strong> ${supplement.dosage}</p>
-                    <p><strong>주의사항:</strong> ${supplement.caution}</p>
+                    <h3>${supplement.name}</h3>
+                    <p><strong>효능</strong> ${supplement.description}</p>
+                    <p><strong>권장 용량</strong> ${supplement.dosage}</p>
+                    <p><strong>주의사항</strong> ${supplement.caution}</p>
                 </div>
             `;
         });
 
         response += '</div>';
-        response += '<p class="info-text">※ 개인의 건강 상태에 따라 적합한 영양제가 다를 수 있습니다. 복용 전 전문가와 상담하시기 바랍니다.</p>';
+        response += '<p class="info-text">개인의 건강 상태에 따라 적합한 영양제가 다를 수 있습니다.</p>';
         return response;
     } else {
         // 일치하는 키워드가 없을 경우
         return `
-            <p>죄송합니다. "<strong>${query}</strong>"에 대한 정보를 찾지 못했습니다.</p>
-            <p>다음 키워드로 다시 질문해주세요:</p>
-            <p class="info-text">• 피로회복<br>• 면역력 강화<br>• 눈 건강<br>• 관절 건강<br>• 스트레스 관리</p>
+            <p>"<strong>${query}</strong>"에 대한 정보를 찾지 못했습니다.</p>
+            <p>아래 키워드로 다시 질문해주세요.</p>
+            <p class="info-text">피로회복 / 면역력 강화 / 눈 건강 / 관절 건강 / 스트레스 관리</p>
         `;
     }
 }
