@@ -48,6 +48,10 @@ Suggesting specific supplements for a symptom, directly to the public, runs into
 
 **Known issue:** user input is inserted into the page as raw HTML. That doesn't matter for a local demo, but the input would have to be escaped before going online.
 
+## License
+
+All rights reserved. See [`LICENSE`](LICENSE).
+
 ---
 
 *For learning purposes only. This is not medical advice.*
