@@ -2,7 +2,7 @@
 
 A Korean-language chat page that suggests dietary supplements based on the symptom a user types in.
 
-> **Discontinued personal project (Feb 2026).** I started this on my own to build a pharmacist-led medication counseling (복약지도) app. I stopped because giving personalized health information directly to the public carried legal risk. I built it when I was just starting to learn to code.
+> **Discontinued personal project (2025, uploaded to GitHub in 2026).** I started this on my own to build a pharmacist-led medication counseling (복약지도) app. I stopped because giving personalized health information directly to the public carried legal risk. I built it when I was just starting to learn to code.
 
 ---
 
